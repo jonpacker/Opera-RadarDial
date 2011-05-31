@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://radardial.operaf.tw" defaultlocale="en" viewmodes="minimized" version="1.0">
+  <name short="Earthporn">Radardial</name>
+  <description>Australian Weather Radar</description>
+  <author href="http://www.jonpacker.com" email="contact@jonpacker.com">Jon Packer</author>
+  <access origin="*" />
+  <feature name="opera:speeddial" required="true">
+      <param name="url" value="http://www.reddit.com/r/earthporn"/>
+  </feature> 
+</widget>

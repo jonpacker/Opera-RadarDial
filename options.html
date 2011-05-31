@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Arvo:regular,bold' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/options.css" type="text/css">
+<script type='text/javascript' src="vendor/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="vendor/knockout-1.2.0.js"></script>
+<script type="text/javascript" src="js/options.js"></script>
+
+<title id="widget-title">RadarDial Preferences</title>
+
+<header>
+  <h1 id="widget-name">RadarDial</h1>
+  <h2 id="widget-desc">Australia's BOM Radars in your Speed Dial</h2>
+</header>
+
+<section>
+  <fieldset>
+    <legend>Radar Selection</legend>
+    <status></status>
+    <p>
+    <table width="100%" border="0" cellpadding="0" summary="" class="generic">
+        
+         <tr>
+            <th colspan="5">
+               <a name="NSW">NSW</a>
+            </th>
+         </tr>
+         <tr class="lighter">
+            <td  class="lighter">
+               Sydney (Terrey Hills)
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR714');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR713');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR712');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR711');">512 km composite</a>
+            </td>
+         </tr>
+
+         <tr>
+            <td>
+               Wollongong (Appin)
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR034');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR033');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR032');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR031');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Canberra
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR403');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR402');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR401');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Grafton
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR283');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR282');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR281');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Mildura (pt) VIC
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR303');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR302');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR301');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Moree (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR533');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR532');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR531');">512 km composite</a>
+            </td>
+         </tr>
+
+         <tr class="lighter">
+            <td>
+               Namoi (Blackjack Mountain)
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR694');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR693');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR692');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR691');">512 km composite</a>
+            </td>
+         </tr>
+
+         <tr class="lighter">
+            <td>
+               Newcastle
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR043');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR042');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR041');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Wagga Wagga (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR553');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR552');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR551');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Yarrawonga VIC
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR494');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR493');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR492');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR491');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Norfolk Island (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR623');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR622');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR621');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <th colspan="5">
+               <a name="NT">NT</a>
+            </th>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Darwin
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR633');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR632');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR631');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Alice Springs (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR253');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR252');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR251');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Gove (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR093');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR092');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR091');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Katherine
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR423');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR422');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR421');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Tennant Creek (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR653');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR652');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR651');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Wyndham WA
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR073');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR072');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR071');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <th colspan="5">
+               <a name="QLD">QLD</a>
+            </th>
+         </tr>
+         <tr class="lighter">
+            <td class="lighter">
+               Brisbane (Mt Stapylton)
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR664');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR663');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR662');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR661');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Brisbane (Marburg)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR503');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR502');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR501');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Bowen
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR243');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR242');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR241');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Cairns
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR193');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR192');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR191');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Emerald
+            </td>
+            <td>
+    <a href="javascript:selectRadar('IDR724');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR723');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR722');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR721');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Gladstone
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR233');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR232');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR231');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Gympie
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR083');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR082');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR081');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Longreach (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR563');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR562');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR561');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Mackay (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR223');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR222');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR221');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Mornington
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR363');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR362');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR361');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Townsville
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR213');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR212');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR211');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Warrego
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR673');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR672');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR671');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Weipa
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR183');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR182');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR181');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Willis Island
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR413');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR412');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR411');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <th colspan="5">
+               <a name="SA">SA</a>
+            </th>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Adelaide (Buckland Park)
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR644');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR643');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR642');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR641');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Adelaide (Sellicks Hill)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR463');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR462');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR461');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Ceduna (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR333');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR332');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR331');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Eucla (pt) WA
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR453');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR452');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR451');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Mildura (pt) VIC
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR303');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR302');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR301');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Mt Gambier (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR143');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR142');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR141');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Woomera
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR273');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR272');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR271');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <th colspan="5">
+               <a name="TAS">TAS</a>
+            </th>
+         </tr>
+         <tr class="lighter">
+            <td>
+               N.W. Tas (West Takone)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR523');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR522');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR521');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Hobart (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR373');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR372');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR371');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <th colspan="5">
+               <a name="VIC">VIC</a>
+            </th>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Melbourne
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR024');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR023');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR022');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR021');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Bairnsdale
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR683');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR682');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR681');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Mildura (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR303');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR302');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR301');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Yarrawonga
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR494');">64 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR493');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR492');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR491');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Mt Gambier (pt) SA
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR143');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR142');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR141');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <th colspan="5">
+               <a name="WA">WA</a>
+            </th>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Perth (Serpentine)
+            </td>
+            <td>
+               &nbsp;
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR703');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR702');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR701');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Albany (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR313');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR312');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR311');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Broome (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR173');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR172');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR171');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Carnarvon (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR053');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR052');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR051');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Dampier
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR153');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR152');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR151');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Esperance (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR323');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR322');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR321');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Eucla (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR453');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR452');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR451');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Geraldton (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR063');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR062');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR061');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Giles (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR443');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR442');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR441');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Halls Creek (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR393');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR392');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR391');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Kalgoorlie (pt)
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR483');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR482');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR481');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Learmonth
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR293');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR292');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR291');">512 km composite</a>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               Pt Hedland
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR163');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR162');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR161');">512 km composite</a>
+            </td>
+         </tr>
+         <tr class="lighter">
+            <td>
+               Wyndham
+            </td>
+            <td>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR073');">128 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR072');">256 km</a>
+            </td>
+            <td>
+               <a href="javascript:selectRadar('IDR071');">512 km composite</a>
+            </td>
+         </tr>
+     </table>
+    </p>
+  </fieldset>
+  <fieldset>
+    <legend>Settings</legend>
+    <status></status>
+    <p>
+    </p>
+  </fieldset>
+</section>
