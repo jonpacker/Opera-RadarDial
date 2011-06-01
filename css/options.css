@@ -14,6 +14,15 @@ header {
   margin: 0 4em;
 }
 
+.center {
+  text-align:center;
+  margin: 0 auto;
+}
+
+.notLight {
+  color: rgba(0,0,0,0.7);
+}
+
 h1 {
   font-family: Arvo;
   font-size: 110px;
@@ -28,7 +37,26 @@ h1 {
   margin: 0 auto;
 }
 
+.pad {
+  padding: 4px;
+  display: inline-block;
+  color: rgba(0,0,0,0.7);
+  font-weight: bold;
+  text-shadow: 0px 1px 0px rgba(255,255,255,0.3);
+}
+
 h2 {
+  font-weight: normal;
+  font-family: Arvo;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 0px 1px 4px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+h3 {
+  
+}
+
+h2#widget-desc {
   font-weight: normal;
   text-shadow: 0px 2px 1px black;
 }
@@ -67,11 +95,65 @@ legend {
   text-shadow: 0px 1px 4px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.2);
 }
 
+#search:before { 
+  content: 'Search: ';
+}
+
+#search {
+  padding: 4px;
+  font-size: 18px;
+  font-family: 'Maven Pro';
+  border-radius: 5px;
+  color: rgb(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.4);
+  width: 250px;
+  float:left;
+  background-color: rgba(255,255,255,0.2);
+  box-shadow:0px 2px 2px rgba(0,0,0,0.3);
+  -o-transition: 0.2s ease-out;
+}
+
+#search:focus {
+  border: 1px solid rgba(255,255,255,0.6);
+  background-color: rgba(255,255,255,0.4);
+  box-shadow:0px 2px 2px rgba(0,0,0,0.3), 0px 0px 40px rgba(255,255,255,0.6);
+}
+
 input[type=range] {
   margin: 0 1em;
 }
 
-fieldset p {
+td,tr {
+  -o-transition: 0.1s ease-out;
+}
+
+td:first-child {
+  font-weight:bold;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.8);
+}
+/*
+bad performance on this one
+table:hover tr:not(:hover):not(.state) td {
+  opacity:0.5;
+}
+*/
+tr.state {
+  background-color: transparent;
+  font-size: 28px;
+  font-family: Arvo;
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.8);
+}
+
+tr.state > th {
+  padding: 5px;
+}
+
+tr:not(.state) >td {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+fieldset p {  
   text-align:center;
   color: rgba(0,0,0,0.8);
   text-shadow: 0px 1px 0px rgba(255,255,255,0.2);
@@ -97,6 +179,15 @@ status.ok {
   color: green;
 }
 
+status.ignore {
+  color: rgba(0,0,0,0.7);
+  text-shadow: 0px 1px 4px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.2);
+  text-overflow: ellipsis;
+  max-width: 550px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 td > a {
   color: rgba(25,25,25,0.8);
   display:block;
@@ -107,11 +198,26 @@ td > a {
   border: 2px solid;
   border-color: rgba(255,255,255,0.0);
   border-radius: 5px;
+  background-color: rgba(255,255,255,0.0);
   text-align:center;
+  text-decoration: none;
 }
 td > a:hover {
   color: rgba(15,15,15,1.0);
-  border-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.2);
+}
+
+.selectedRadar {
+  background: -o-linear-gradient(rgb(150,150,150), rgb(41,41,41));
+  background-clip: padding-box;
+  box-shadow: 0px 2px 3px rgba(0,0,0,1.0), 0px 0px 40px rgba(255,255,255,0.8);
+  color: rgba(15,15,15,1.0);
+  font-weight: bold;
+  color: rgba(255,255,255,0.9) !important;
+  text-shadow: 0px -1px 0px rgba(0,0,0,1), 0px 0px 6px rgba(255,255,255,0.5);
+  border-color: rgba(255,255,255,0.4);
+  padding: 1px;
+  border-width: 1px;
 }
 
 .hide {
@@ -131,19 +237,22 @@ td > a:hover {
 }
 
 input[type=text] {
-  border-radius: 4px;
-  border: 0.1em solid rgba(80,80,130,1.0);
   padding: 0.3em 1em;
   font-weight: bold;
-  width: 100px;
-  background-color: rgba(255,255,255,0);
-  background-image: -o-linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.6));
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+  width: 200px;
+  font-size: 14px;
+  background-color: rgba(255,255,255,0.2);
+  box-shadow:0px 2px 2px rgba(0,0,0,0.3);
+  -o-transition: 0.2s ease-out;
+  border-radius: 5px;
+  color: rgb(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.4);
 }
 
 input[type=text]:focus {
-  padding: 0.2em 0.9em;
-  border: 0.2em solid rgba(80,80,130,1.0);
+  border: 1px solid rgba(255,255,255,0.6);
+  background-color: rgba(255,255,255,0.4);
+  box-shadow:0px 2px 2px rgba(0,0,0,0.3), 0px 0px 40px rgba(255,255,255,0.6);
 }
 
 button:hover {

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Maven+Pro:regular,bold' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Arvo:regular,bold' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/options.css" type="text/css">
+<link rel="stylesheet" href="css/tipTip.css" type="text/css">
 <script type='text/javascript' src="vendor/jquery-1.6.min.js"></script>
 <script type="text/javascript" src="vendor/knockout-1.2.0.js"></script>
+<script type="text/javascript" src="vendor/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="vendor/liquidmetal.js"></script>
+<script type="text/javascript" src="vendor/jquery.domsearch.js"></script>
 <script type="text/javascript" src="js/options.js"></script>
 
 <title id="widget-title">RadarDial Preferences</title>
@@ -15,13 +19,45 @@
 </header>
 
 <section>
+  <fieldset class='notLight'>
+    <legend>Settings</legend>
+    <status></status>
+    <div class='center'>
+      <p>
+        <h2>Background Positioning Mode</h2>
+        <em>Hover for examples</em><br/>
+        <span class='pad' id="cover"><input type="radio" name="backgroundMode" value="cover" data-bind="checked: backgroundMode">Fill</input></span>
+        <span class='pad' id="fill"><input type="radio" name="backgroundMode" value="fill" data-bind="checked: backgroundMode">Stretch</input></span>
+        <span class='pad' id="fit"><input type="radio" name="backgroundMode" value="fit" data-bind="checked: backgroundMode">Fit</input></span>
+        <span class='pad' id="none"><input type="radio" name="backgroundMode" value="none" data-bind="checked: backgroundMode">Center</input></span>
+      </p>
+      <br/>
+      <p>
+        <h2>Layers</h2>
+        <em>These make up the components of the radar image</em><br/>
+        <span class='pad'><input type="checkbox" data-bind="checked: showTopographyLayer">Topography</input></span>
+        <span class='pad'><input type="checkbox" data-bind="checked: showLocationsLayer">Locations</input></span>
+        <span class='pad'><input type="checkbox" data-bind="checked: showRangeLayer">Range</input></span>
+      </p>
+      <br/>
+      <br/>
+      <p>
+        <h2>Destination</h2>
+        <em>Where you're taken when you click the Speed Dial</em><br/>
+        <span class='pad'><input type="radio" name="dest" value="1" data-bind="checked: defaultDestination">Corresponding BOM Radar Page</input></span>
+        <span class='pad'><input type="radio" name="dest" value="0" data-bind="checked: defaultDestination">Custom Page</input></span>
+        <span class='pad'><input type="text" data-bind="value: customDestinationValue, visible: defaultDestination() == false, valueUpdate: 'afterkeydown'" /></span>
+      </p>
+    </div>
+  </fieldset>
   <fieldset>
     <legend>Radar Selection</legend>
-    <status></status>
+    <status class='selName ignore'></status>
     <p>
-    <table width="100%" border="0" cellpadding="0" summary="" class="generic">
+    <input id="search" />
+    <table id="radars" width="100%" border="0" cellpadding="0" cellspacing="0" summary="" class="generic">
         
-         <tr>
+         <tr class="state">
             <th colspan="5">
                <a name="NSW">NSW</a>
             </th>
@@ -31,16 +67,16 @@
                Sydney (Terrey Hills)
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR714');">64 km</a>
+               <a data-bind="click: function() { this.radar('IDR714'); }, css: { selectedRadar: radar() == 'IDR714' }" radarName='IDR714'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR713');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR713'); }, css: { selectedRadar: radar() == 'IDR713' }" radarName='IDR713'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR712');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR712'); }, css: { selectedRadar: radar() == 'IDR712' }" radarName='IDR712'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR711');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR711'); }, css: { selectedRadar: radar() == 'IDR711' }" radarName='IDR711'>512 km composite</a>
             </td>
          </tr>
 
@@ -49,16 +85,16 @@
                Wollongong (Appin)
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR034');">64 km</a>
+               <a data-bind="click: function() { this.radar('IDR034'); }, css: { selectedRadar: radar() == 'IDR034' }" radarName='IDR034'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR033');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR033'); }, css: { selectedRadar: radar() == 'IDR033' }" radarName='IDR033'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR032');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR032'); }, css: { selectedRadar: radar() == 'IDR032' }" radarName='IDR032'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR031');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR031'); }, css: { selectedRadar: radar() == 'IDR031' }" radarName='IDR031'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -68,13 +104,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR403');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR403'); }, css: { selectedRadar: radar() == 'IDR403' }" radarName='IDR403'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR402');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR402'); }, css: { selectedRadar: radar() == 'IDR402' }" radarName='IDR402'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR401');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR401'); }, css: { selectedRadar: radar() == 'IDR401' }" radarName='IDR401'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -84,13 +120,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR283');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR283'); }, css: { selectedRadar: radar() == 'IDR283' }" radarName='IDR283'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR282');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR282'); }, css: { selectedRadar: radar() == 'IDR282' }" radarName='IDR282'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR281');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR281'); }, css: { selectedRadar: radar() == 'IDR281' }" radarName='IDR281'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -100,13 +136,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR303');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR303'); }, css: { selectedRadar: radar() == 'IDR303' }" radarName='IDR303'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR302');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR302'); }, css: { selectedRadar: radar() == 'IDR302' }" radarName='IDR302'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR301');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR301'); }, css: { selectedRadar: radar() == 'IDR301' }" radarName='IDR301'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -116,13 +152,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR533');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR533'); }, css: { selectedRadar: radar() == 'IDR533' }" radarName='IDR533'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR532');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR532'); }, css: { selectedRadar: radar() == 'IDR532' }" radarName='IDR532'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR531');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR531'); }, css: { selectedRadar: radar() == 'IDR531' }" radarName='IDR531'>512 km composite</a>
             </td>
          </tr>
 
@@ -131,16 +167,16 @@
                Namoi (Blackjack Mountain)
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR694');">64 km</a>
+               <a data-bind="click: function() { this.radar('IDR694'); }, css: { selectedRadar: radar() == 'IDR694' }" radarName='IDR694'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR693');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR693'); }, css: { selectedRadar: radar() == 'IDR693' }" radarName='IDR693'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR692');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR692'); }, css: { selectedRadar: radar() == 'IDR692' }" radarName='IDR692'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR691');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR691'); }, css: { selectedRadar: radar() == 'IDR691' }" radarName='IDR691'>512 km composite</a>
             </td>
          </tr>
 
@@ -151,13 +187,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR043');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR043'); }, css: { selectedRadar: radar() == 'IDR043' }" radarName='IDR043'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR042');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR042'); }, css: { selectedRadar: radar() == 'IDR042' }" radarName='IDR042'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR041');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR041'); }, css: { selectedRadar: radar() == 'IDR041' }" radarName='IDR041'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -167,13 +203,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR553');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR553'); }, css: { selectedRadar: radar() == 'IDR553' }" radarName='IDR553'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR552');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR552'); }, css: { selectedRadar: radar() == 'IDR552' }" radarName='IDR552'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR551');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR551'); }, css: { selectedRadar: radar() == 'IDR551' }" radarName='IDR551'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -181,16 +217,16 @@
                Yarrawonga VIC
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR494');">64 km</a>
+               <a data-bind="click: function() { this.radar('IDR494'); }, css: { selectedRadar: radar() == 'IDR494' }" radarName='IDR494'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR493');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR493'); }, css: { selectedRadar: radar() == 'IDR493' }" radarName='IDR493'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR492');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR492'); }, css: { selectedRadar: radar() == 'IDR492' }" radarName='IDR492'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR491');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR491'); }, css: { selectedRadar: radar() == 'IDR491' }" radarName='IDR491'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -200,16 +236,16 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR623');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR623'); }, css: { selectedRadar: radar() == 'IDR623' }" radarName='IDR623'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR622');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR622'); }, css: { selectedRadar: radar() == 'IDR622' }" radarName='IDR622'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR621');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR621'); }, css: { selectedRadar: radar() == 'IDR621' }" radarName='IDR621'>512 km composite</a>
             </td>
          </tr>
-         <tr>
+         <tr class="state">
             <th colspan="5">
                <a name="NT">NT</a>
             </th>
@@ -221,13 +257,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR633');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR633'); }, css: { selectedRadar: radar() == 'IDR633' }" radarName='IDR633'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR632');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR632'); }, css: { selectedRadar: radar() == 'IDR632' }" radarName='IDR632'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR631');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR631'); }, css: { selectedRadar: radar() == 'IDR631' }" radarName='IDR631'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -237,13 +273,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR253');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR253'); }, css: { selectedRadar: radar() == 'IDR253' }" radarName='IDR253'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR252');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR252'); }, css: { selectedRadar: radar() == 'IDR252' }" radarName='IDR252'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR251');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR251'); }, css: { selectedRadar: radar() == 'IDR251' }" radarName='IDR251'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -253,13 +289,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR093');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR093'); }, css: { selectedRadar: radar() == 'IDR093' }" radarName='IDR093'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR092');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR092'); }, css: { selectedRadar: radar() == 'IDR092' }" radarName='IDR092'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR091');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR091'); }, css: { selectedRadar: radar() == 'IDR091' }" radarName='IDR091'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -269,13 +305,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR423');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR423'); }, css: { selectedRadar: radar() == 'IDR423' }" radarName='IDR423'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR422');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR422'); }, css: { selectedRadar: radar() == 'IDR422' }" radarName='IDR422'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR421');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR421'); }, css: { selectedRadar: radar() == 'IDR421' }" radarName='IDR421'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -285,13 +321,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR653');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR653'); }, css: { selectedRadar: radar() == 'IDR653' }" radarName='IDR653'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR652');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR652'); }, css: { selectedRadar: radar() == 'IDR652' }" radarName='IDR652'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR651');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR651'); }, css: { selectedRadar: radar() == 'IDR651' }" radarName='IDR651'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -301,16 +337,16 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR073');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR073'); }, css: { selectedRadar: radar() == 'IDR073' }" radarName='IDR073'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR072');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR072'); }, css: { selectedRadar: radar() == 'IDR072' }" radarName='IDR072'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR071');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR071'); }, css: { selectedRadar: radar() == 'IDR071' }" radarName='IDR071'>512 km composite</a>
             </td>
          </tr>
-         <tr>
+         <tr class="state">
             <th colspan="5">
                <a name="QLD">QLD</a>
             </th>
@@ -320,16 +356,16 @@
                Brisbane (Mt Stapylton)
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR664');">64 km</a>
+               <a data-bind="click: function() { this.radar('IDR664'); }, css: { selectedRadar: radar() == 'IDR664' }" radarName='IDR664'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR663');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR663'); }, css: { selectedRadar: radar() == 'IDR663' }" radarName='IDR663'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR662');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR662'); }, css: { selectedRadar: radar() == 'IDR662' }" radarName='IDR662'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR661');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR661'); }, css: { selectedRadar: radar() == 'IDR661' }" radarName='IDR661'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -339,13 +375,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR503');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR503'); }, css: { selectedRadar: radar() == 'IDR503' }" radarName='IDR503'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR502');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR502'); }, css: { selectedRadar: radar() == 'IDR502' }" radarName='IDR502'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR501');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR501'); }, css: { selectedRadar: radar() == 'IDR501' }" radarName='IDR501'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -355,13 +391,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR243');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR243'); }, css: { selectedRadar: radar() == 'IDR243' }" radarName='IDR243'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR242');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR242'); }, css: { selectedRadar: radar() == 'IDR242' }" radarName='IDR242'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR241');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR241'); }, css: { selectedRadar: radar() == 'IDR241' }" radarName='IDR241'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -371,13 +407,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR193');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR193'); }, css: { selectedRadar: radar() == 'IDR193' }" radarName='IDR193'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR192');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR192'); }, css: { selectedRadar: radar() == 'IDR192' }" radarName='IDR192'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR191');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR191'); }, css: { selectedRadar: radar() == 'IDR191' }" radarName='IDR191'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -385,16 +421,16 @@
                Emerald
             </td>
             <td>
-    <a href="javascript:selectRadar('IDR724');">64 km</a>
+    <a data-bind="click: function() { this.radar('IDR724'); }, css: { selectedRadar: radar() == 'IDR724' }" radarName='IDR724'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR723');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR723'); }, css: { selectedRadar: radar() == 'IDR723' }" radarName='IDR723'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR722');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR722'); }, css: { selectedRadar: radar() == 'IDR722' }" radarName='IDR722'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR721');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR721'); }, css: { selectedRadar: radar() == 'IDR721' }" radarName='IDR721'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -404,13 +440,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR233');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR233'); }, css: { selectedRadar: radar() == 'IDR233' }" radarName='IDR233'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR232');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR232'); }, css: { selectedRadar: radar() == 'IDR232' }" radarName='IDR232'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR231');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR231'); }, css: { selectedRadar: radar() == 'IDR231' }" radarName='IDR231'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -420,13 +456,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR083');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR083'); }, css: { selectedRadar: radar() == 'IDR083' }" radarName='IDR083'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR082');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR082'); }, css: { selectedRadar: radar() == 'IDR082' }" radarName='IDR082'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR081');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR081'); }, css: { selectedRadar: radar() == 'IDR081' }" radarName='IDR081'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -436,13 +472,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR563');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR563'); }, css: { selectedRadar: radar() == 'IDR563' }" radarName='IDR563'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR562');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR562'); }, css: { selectedRadar: radar() == 'IDR562' }" radarName='IDR562'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR561');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR561'); }, css: { selectedRadar: radar() == 'IDR561' }" radarName='IDR561'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -452,13 +488,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR223');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR223'); }, css: { selectedRadar: radar() == 'IDR223' }" radarName='IDR223'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR222');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR222'); }, css: { selectedRadar: radar() == 'IDR222' }" radarName='IDR222'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR221');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR221'); }, css: { selectedRadar: radar() == 'IDR221' }" radarName='IDR221'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -468,13 +504,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR363');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR363'); }, css: { selectedRadar: radar() == 'IDR363' }" radarName='IDR363'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR362');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR362'); }, css: { selectedRadar: radar() == 'IDR362' }" radarName='IDR362'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR361');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR361'); }, css: { selectedRadar: radar() == 'IDR361' }" radarName='IDR361'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -484,13 +520,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR213');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR213'); }, css: { selectedRadar: radar() == 'IDR213' }" radarName='IDR213'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR212');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR212'); }, css: { selectedRadar: radar() == 'IDR212' }" radarName='IDR212'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR211');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR211'); }, css: { selectedRadar: radar() == 'IDR211' }" radarName='IDR211'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -500,13 +536,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR673');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR673'); }, css: { selectedRadar: radar() == 'IDR673' }" radarName='IDR673'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR672');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR672'); }, css: { selectedRadar: radar() == 'IDR672' }" radarName='IDR672'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR671');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR671'); }, css: { selectedRadar: radar() == 'IDR671' }" radarName='IDR671'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -516,13 +552,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR183');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR183'); }, css: { selectedRadar: radar() == 'IDR183' }" radarName='IDR183'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR182');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR182'); }, css: { selectedRadar: radar() == 'IDR182' }" radarName='IDR182'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR181');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR181'); }, css: { selectedRadar: radar() == 'IDR181' }" radarName='IDR181'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -532,16 +568,16 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR413');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR413'); }, css: { selectedRadar: radar() == 'IDR413' }" radarName='IDR413'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR412');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR412'); }, css: { selectedRadar: radar() == 'IDR412' }" radarName='IDR412'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR411');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR411'); }, css: { selectedRadar: radar() == 'IDR411' }" radarName='IDR411'>512 km composite</a>
             </td>
          </tr>
-         <tr>
+         <tr class="state">
             <th colspan="5">
                <a name="SA">SA</a>
             </th>
@@ -551,16 +587,16 @@
                Adelaide (Buckland Park)
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR644');">64 km</a>
+               <a data-bind="click: function() { this.radar('IDR644'); }, css: { selectedRadar: radar() == 'IDR644' }" radarName='IDR644'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR643');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR643'); }, css: { selectedRadar: radar() == 'IDR643' }" radarName='IDR643'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR642');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR642'); }, css: { selectedRadar: radar() == 'IDR642' }" radarName='IDR642'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR641');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR641'); }, css: { selectedRadar: radar() == 'IDR641' }" radarName='IDR641'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -570,13 +606,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR463');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR463'); }, css: { selectedRadar: radar() == 'IDR463' }" radarName='IDR463'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR462');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR462'); }, css: { selectedRadar: radar() == 'IDR462' }" radarName='IDR462'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR461');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR461'); }, css: { selectedRadar: radar() == 'IDR461' }" radarName='IDR461'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -586,13 +622,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR333');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR333'); }, css: { selectedRadar: radar() == 'IDR333' }" radarName='IDR333'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR332');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR332'); }, css: { selectedRadar: radar() == 'IDR332' }" radarName='IDR332'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR331');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR331'); }, css: { selectedRadar: radar() == 'IDR331' }" radarName='IDR331'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -602,13 +638,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR453');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR453'); }, css: { selectedRadar: radar() == 'IDR453' }" radarName='IDR453'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR452');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR452'); }, css: { selectedRadar: radar() == 'IDR452' }" radarName='IDR452'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR451');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR451'); }, css: { selectedRadar: radar() == 'IDR451' }" radarName='IDR451'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -618,13 +654,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR303');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR303'); }, css: { selectedRadar: radar() == 'IDR303' }" radarName='IDR303'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR302');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR302'); }, css: { selectedRadar: radar() == 'IDR302' }" radarName='IDR302'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR301');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR301'); }, css: { selectedRadar: radar() == 'IDR301' }" radarName='IDR301'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -634,13 +670,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR143');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR143'); }, css: { selectedRadar: radar() == 'IDR143' }" radarName='IDR143'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR142');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR142'); }, css: { selectedRadar: radar() == 'IDR142' }" radarName='IDR142'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR141');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR141'); }, css: { selectedRadar: radar() == 'IDR141' }" radarName='IDR141'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -650,16 +686,16 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR273');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR273'); }, css: { selectedRadar: radar() == 'IDR273' }" radarName='IDR273'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR272');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR272'); }, css: { selectedRadar: radar() == 'IDR272' }" radarName='IDR272'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR271');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR271'); }, css: { selectedRadar: radar() == 'IDR271' }" radarName='IDR271'>512 km composite</a>
             </td>
          </tr>
-         <tr>
+         <tr class="state">
             <th colspan="5">
                <a name="TAS">TAS</a>
             </th>
@@ -671,13 +707,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR523');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR523'); }, css: { selectedRadar: radar() == 'IDR523' }" radarName='IDR523'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR522');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR522'); }, css: { selectedRadar: radar() == 'IDR522' }" radarName='IDR522'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR521');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR521'); }, css: { selectedRadar: radar() == 'IDR521' }" radarName='IDR521'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -687,16 +723,16 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR373');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR373'); }, css: { selectedRadar: radar() == 'IDR373' }" radarName='IDR373'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR372');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR372'); }, css: { selectedRadar: radar() == 'IDR372' }" radarName='IDR372'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR371');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR371'); }, css: { selectedRadar: radar() == 'IDR371' }" radarName='IDR371'>512 km composite</a>
             </td>
          </tr>
-         <tr>
+         <tr class="state">
             <th colspan="5">
                <a name="VIC">VIC</a>
             </th>
@@ -706,16 +742,16 @@
                Melbourne
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR024');">64 km</a>
+               <a data-bind="click: function() { this.radar('IDR024'); }, css: { selectedRadar: radar() == 'IDR024' }" radarName='IDR024'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR023');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR023'); }, css: { selectedRadar: radar() == 'IDR023' }" radarName='IDR023'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR022');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR022'); }, css: { selectedRadar: radar() == 'IDR022' }" radarName='IDR022'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR021');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR021'); }, css: { selectedRadar: radar() == 'IDR021' }" radarName='IDR021'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -725,13 +761,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR683');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR683'); }, css: { selectedRadar: radar() == 'IDR683' }" radarName='IDR683'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR682');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR682'); }, css: { selectedRadar: radar() == 'IDR682' }" radarName='IDR682'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR681');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR681'); }, css: { selectedRadar: radar() == 'IDR681' }" radarName='IDR681'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -741,13 +777,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR303');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR303'); }, css: { selectedRadar: radar() == 'IDR303' }" radarName='IDR303'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR302');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR302'); }, css: { selectedRadar: radar() == 'IDR302' }" radarName='IDR302'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR301');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR301'); }, css: { selectedRadar: radar() == 'IDR301' }" radarName='IDR301'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -755,16 +791,16 @@
                Yarrawonga
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR494');">64 km</a>
+               <a data-bind="click: function() { this.radar('IDR494'); }, css: { selectedRadar: radar() == 'IDR494' }" radarName='IDR494'>64 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR493');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR493'); }, css: { selectedRadar: radar() == 'IDR493' }" radarName='IDR493'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR492');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR492'); }, css: { selectedRadar: radar() == 'IDR492' }" radarName='IDR492'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR491');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR491'); }, css: { selectedRadar: radar() == 'IDR491' }" radarName='IDR491'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -774,16 +810,16 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR143');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR143'); }, css: { selectedRadar: radar() == 'IDR143' }" radarName='IDR143'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR142');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR142'); }, css: { selectedRadar: radar() == 'IDR142' }" radarName='IDR142'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR141');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR141'); }, css: { selectedRadar: radar() == 'IDR141' }" radarName='IDR141'>512 km composite</a>
             </td>
          </tr>
-         <tr>
+         <tr class="state">
             <th colspan="5">
                <a name="WA">WA</a>
             </th>
@@ -796,13 +832,13 @@
                &nbsp;
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR703');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR703'); }, css: { selectedRadar: radar() == 'IDR703' }" radarName='IDR703'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR702');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR702'); }, css: { selectedRadar: radar() == 'IDR702' }" radarName='IDR702'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR701');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR701'); }, css: { selectedRadar: radar() == 'IDR701' }" radarName='IDR701'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -812,13 +848,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR313');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR313'); }, css: { selectedRadar: radar() == 'IDR313' }" radarName='IDR313'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR312');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR312'); }, css: { selectedRadar: radar() == 'IDR312' }" radarName='IDR312'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR311');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR311'); }, css: { selectedRadar: radar() == 'IDR311' }" radarName='IDR311'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -828,13 +864,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR173');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR173'); }, css: { selectedRadar: radar() == 'IDR173' }" radarName='IDR173'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR172');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR172'); }, css: { selectedRadar: radar() == 'IDR172' }" radarName='IDR172'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR171');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR171'); }, css: { selectedRadar: radar() == 'IDR171' }" radarName='IDR171'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -844,13 +880,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR053');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR053'); }, css: { selectedRadar: radar() == 'IDR053' }" radarName='IDR053'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR052');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR052'); }, css: { selectedRadar: radar() == 'IDR052' }" radarName='IDR052'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR051');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR051'); }, css: { selectedRadar: radar() == 'IDR051' }" radarName='IDR051'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -860,13 +896,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR153');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR153'); }, css: { selectedRadar: radar() == 'IDR153' }" radarName='IDR153'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR152');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR152'); }, css: { selectedRadar: radar() == 'IDR152' }" radarName='IDR152'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR151');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR151'); }, css: { selectedRadar: radar() == 'IDR151' }" radarName='IDR151'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -876,13 +912,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR323');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR323'); }, css: { selectedRadar: radar() == 'IDR323' }" radarName='IDR323'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR322');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR322'); }, css: { selectedRadar: radar() == 'IDR322' }" radarName='IDR322'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR321');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR321'); }, css: { selectedRadar: radar() == 'IDR321' }" radarName='IDR321'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -892,13 +928,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR453');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR453'); }, css: { selectedRadar: radar() == 'IDR453' }" radarName='IDR453'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR452');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR452'); }, css: { selectedRadar: radar() == 'IDR452' }" radarName='IDR452'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR451');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR451'); }, css: { selectedRadar: radar() == 'IDR451' }" radarName='IDR451'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -908,13 +944,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR063');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR063'); }, css: { selectedRadar: radar() == 'IDR063' }" radarName='IDR063'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR062');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR062'); }, css: { selectedRadar: radar() == 'IDR062' }" radarName='IDR062'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR061');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR061'); }, css: { selectedRadar: radar() == 'IDR061' }" radarName='IDR061'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -924,13 +960,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR443');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR443'); }, css: { selectedRadar: radar() == 'IDR443' }" radarName='IDR443'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR442');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR442'); }, css: { selectedRadar: radar() == 'IDR442' }" radarName='IDR442'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR441');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR441'); }, css: { selectedRadar: radar() == 'IDR441' }" radarName='IDR441'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -940,13 +976,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR393');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR393'); }, css: { selectedRadar: radar() == 'IDR393' }" radarName='IDR393'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR392');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR392'); }, css: { selectedRadar: radar() == 'IDR392' }" radarName='IDR392'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR391');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR391'); }, css: { selectedRadar: radar() == 'IDR391' }" radarName='IDR391'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -956,13 +992,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR483');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR483'); }, css: { selectedRadar: radar() == 'IDR483' }" radarName='IDR483'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR482');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR482'); }, css: { selectedRadar: radar() == 'IDR482' }" radarName='IDR482'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR481');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR481'); }, css: { selectedRadar: radar() == 'IDR481' }" radarName='IDR481'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -972,13 +1008,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR293');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR293'); }, css: { selectedRadar: radar() == 'IDR293' }" radarName='IDR293'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR292');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR292'); }, css: { selectedRadar: radar() == 'IDR292' }" radarName='IDR292'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR291');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR291'); }, css: { selectedRadar: radar() == 'IDR291' }" radarName='IDR291'>512 km composite</a>
             </td>
          </tr>
          <tr>
@@ -988,13 +1024,13 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR163');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR163'); }, css: { selectedRadar: radar() == 'IDR163' }" radarName='IDR163'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR162');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR162'); }, css: { selectedRadar: radar() == 'IDR162' }" radarName='IDR162'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR161');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR161'); }, css: { selectedRadar: radar() == 'IDR161' }" radarName='IDR161'>512 km composite</a>
             </td>
          </tr>
          <tr class="lighter">
@@ -1004,22 +1040,16 @@
             <td>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR073');">128 km</a>
+               <a data-bind="click: function() { this.radar('IDR073'); }, css: { selectedRadar: radar() == 'IDR073' }" radarName='IDR073'>128 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR072');">256 km</a>
+               <a data-bind="click: function() { this.radar('IDR072'); }, css: { selectedRadar: radar() == 'IDR072' }" radarName='IDR072'>256 km</a>
             </td>
             <td>
-               <a href="javascript:selectRadar('IDR071');">512 km composite</a>
+               <a data-bind="click: function() { this.radar('IDR071'); }, css: { selectedRadar: radar() == 'IDR071' }" radarName='IDR071'>512 km composite</a>
             </td>
          </tr>
      </table>
-    </p>
-  </fieldset>
-  <fieldset>
-    <legend>Settings</legend>
-    <status></status>
-    <p>
     </p>
   </fieldset>
 </section>

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" id="http://radardial.operaf.tw" defaultlocale="en" viewmodes="minimized" version="1.0">
   <name short="Earthporn">Radardial</name>
-  <description>Australian Weather Radar</description>
+  <description>Displays the current weather radar loop for a local area in Australia, using data from the Bureau of Meteorology.</description>
   <author href="http://www.jonpacker.com" email="contact@jonpacker.com">Jon Packer</author>
+  <preference name="radar" value="IDR663"/>
+  <preference name="backgroundMode" value="cover"/>
+  <preference name="showTopographyLayer" value="1"/>
+  <preference name="showLocationsLayer" value="1"/>
+  <preference name="showRangeLayer" value="1"/>
+  <preference name="defaultDestination" value="1"/>
+  <preference name="customDestinationValue" value=""/>
+  <icon src="images/icon.png"/>
   <access origin="*" />
   <feature name="opera:speeddial" required="true">
-      <param name="url" value="http://www.reddit.com/r/earthporn"/>
+      <param name="url" value="http://www.bom.gov.au/products/IDR663.loop.shtml"/>
   </feature> 
 </widget>
